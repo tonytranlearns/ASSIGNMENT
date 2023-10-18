@@ -1,0 +1,19 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 500,
+    "height": 300,
+    "config": {
+      "background": "#FFFFCC" 
+    },
+    "data": { "url": "https://raw.githubusercontent.com/tonytranlearns/ASSIGNMENT/main/Crash%20Statistics%20Victoria%20-%20Crash%20Statistics%20Victoria.csv.csv"},
+
+    "mark": "bar",
+    "encoding": {
+      "x": {"field": "DAY_OF_WEEK","scale": {"domain":["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]}, "title": "Day Of Week"},
+      "y": {"field": "ALCOHOL_RELATED", "type": "quantitative", "aggregate": "count", "title": "TOTAL INCIDENTS" },
+      "xOffset": {"field": "ALCOHOL_RELATED"},
+      "color": {"field": "ALCOHOL_RELATED", "type": "nominal", "scale":{"range": ["#FF6B81", "#6EA4E6"]}}
+    },
+    "config": {"view": {"stroke": null}, "axis": {"grid": false}}
+  }
+  

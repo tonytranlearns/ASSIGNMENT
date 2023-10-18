@@ -1,0 +1,44 @@
+{
+    "width": 800,
+    "height": 300,
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": { "url": "https://raw.githubusercontent.com/tonytranlearns/ASSIGNMENT/main/cleaned_data%20-person.csv.csv"},
+    
+    "hconcat": [{
+    "transform": [{"filter":{"field": "SEX", "equal": "F" }}],
+    "mark": {"type": "bar"},
+    "title": "Female",
+    "config": {
+        "background": "#FFFFCC" 
+      },
+    "encoding": {
+        "y": {"field": "Age Group", "type": "ordinal", "axis":null},
+        "x": {"field": "SEX" , "type": "quantitative", "aggregate":"count","sort": "descending", "title":"Number Accident"},
+        "color":{"field":"SEX", "scale":{"range": ["#FF6B81", "#6EA4E6"]}}
+    }
+    },
+    {
+        "view": {"stroke":null},
+        "mark": {"type": "text", "align":"center"},
+        "encoding": {
+            "y":{
+                "field": "Age Group",
+                "type": "nominal",
+                "axis": null,
+                "sort": "descending"
+            },
+        "text": {"field": "Age Group", "type": "nominal"}
+        }
+    },
+    {
+    "transform": [{"filter":{"field": "SEX", "equal": "M" }}],
+    "mark": {"type": "bar"},
+    "title":"Male",
+    "encoding": {
+        "y": {"field": "Age Group", "type": "ordinal", "title": null, "axis":null},
+        "x": {"field": "SEX" , "type": "quantitative", "aggregate":"count", "title":"Number Accident"},
+        "color": {"field": "SEX"}    
+    }}
+    ],
+    "config": {"view": {"stroke": null}, "axis": {"grid": false}}
+}

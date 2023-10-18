@@ -1,0 +1,16 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 500,
+    "height": 300,
+    "description": "A simple pie chart with embedded data.",
+    "data": {
+      "url": "https://raw.githubusercontent.com/tonytranlearns/ASSIGNMENT/main/Crash%20Statistics%20Victoria%20-%20Crash%20Statistics%20Victoria.csv.csv"
+    },
+    "mark": "arc",
+    "encoding": {
+      "theta": {"field": "ALCOHOL_RELATED", "type": "quantitative","aggregate":"count"},
+      "color": {"field": "ALCOHOL_RELATED", "type": "nominal", "scale":{"range": ["#FF6B81", "#6EA4E6"]}},
+      "tooltip": {"field": "ALCOHOL_RELATED"}
+
+    }
+  }

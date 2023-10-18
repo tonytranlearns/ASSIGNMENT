@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=210, initial-scale=1.0">
+
+    <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+     <!-- Import Pure CSS -->
+     <link rel="stylesheet" href="style.css" media="all">
+     <!-- Import Pure CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/pure-min.css" crossorigin="anonymous">
+    
+</head>
+<body>
+    <div class="page"> <!-- START OF PAGE -->
+
+        <!-- Box For The Title-->
+        <div class="rounded-container">
+        <!-- Start -->
+            <div class="pure-g title">
+            <div class="pure-u-1-1">
+                <h1>Alert Today, Alive Tommorow</h1>
+            </div>
+        </div>
+        </div>
+        <!-- END -->
+
+        <!-- EMPTY SPACE -->
+        <div class="empty_container"></div>
+
+        <!-- Box for MAP Graph -->
+        <div class="rounded-container">
+        <!-- START-->
+        <h2>Location Of Acidents From 2015 To 2020 In Victoria</h2>
+        <div class="pure-g">
+            <!-- Map Visualisation First -->
+            <div class="pure-u-1-1">
+                <div id="victoriamap" class="idiom-container"></div>
+            </div>
+            <!-- Description of Map Visualisation -->
+            <div class="pure-u-1-1">
+                <p>On this map of Victoria are the locations all all <br> accidents and all types of servirities. Other injuries are the <br>
+                    most common injuries that show up the most. Crashes occur mainly in the cbd where traffic are usually conjested.
+                </p>
+            </div>
+        </div>
+        </div>
+        <!-- END-->
+
+        <!-- EMPTY SPACE -->
+        <div class="empty_container"></div>
+
+        <!-- Box For Pie Graph and Group Bar Chart -->
+        <div class="rounded-container">
+        <!-- START-->
+        <h2>Day Of The Week Vs Number Of Incidents</h2>
+        <div class="pure-g">
+            <!-- Pie Chart Of Alcohol Induce Crashes-->
+            <!-- Group Bar Chart -->
+            
+            <div class="pure-u-1-1">
+                <div id="groupbar" class=" idiom-container"></div>
+                <p> There are not many alcohol related incidents with car crashes. <br>
+                It seems during the weekend there are alot less crashes compared to the weekday.</p>
+            </div>
+        </div>
+        </div>
+        <!-- END-->
+
+        <!-- EMPTY SPACE -->
+        <div class="empty_container"></div>
+
+        <!-- Box For Pie Graph and Group Bar Chart -->
+        <div class="rounded-container">
+            <!-- START-->
+            <h2>Pie Chart Of What Percentage Of Incidents Are Alcohol Induced</h2>
+            <div class="pure-g">
+                <!-- Pie Chart Of Alcohol Induce Crashes-->
+                
+                <div class="pure-u-1-1">
+                    <div id="alcohol" class = "idiom-container"></div>
+                    <p> Among all the car crashes in Victoria, majority are not induced by alcohol. 
+                        It is seemed that the ruling with drink driving  <br> 
+                        and the advertisement has encourage less drivers to drink and drive.</p>
+                </div>
+            </div>
+            </div>
+        <!-- END-->
+    
+        <!-- EMPTY CONTAINER -->
+        <div class="empty_container"></div>
+
+        <!-- Box Line Chart-->
+        <div class="rounded-container">
+        <div class="idiom-container">
+        <!-- START -->
+        <h2>Trend Chart Of Different Type Of Serverity</h2>
+        <div class="pure-g">
+            
+            <div class="pure-u-1-1">
+                <div id="linechart" class = "idiom-container"></div>
+                <p> Here is a line chart from 2014 to 2020. Across all the years <br> Other Injury accidents are very high compared to the serious and fatal accidents. </p>
+            </div>
+        </div>
+        </div>
+        </div>    
+        <!-- END -->
+
+        <!-- Empty Container-->
+        <div class="empty_container"></div>
+
+        <!-- Box Speed Chart -->
+        <div class="rounded-container">
+            <div class="idiom-container">
+                <h2>At Which Speed Limit Do Crashes Occur?</h2>
+                <div class="pure-g">
+                    
+                    <div class="pure-u-1-1">
+                        <div id="speedlimit" class= "idiom-container"></div>
+                        <p> From the bar chart presented, at 60km per hour has the most <br>number of crashes while at 110km per hour has the least.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EMPTY CONTAINER -->
+        <div class="empty_container"></div>
+
+        <!-- START -->
+        <div class="rounded-container">
+        <div class="idiom-container">
+            <h2> Male and Female Against Number Of Incidents From 2015-2020</h2>
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <div id="compared" class = "idiom-container"></div>
+            </div>
+            <div class="pure-u-1-1">
+                <p> Comparing which gender has the most accidents in Victoria. <br>
+                From this, Males and Female at the end of 30-39 have the most number of accidents <br>
+            respectively. Overall the number of incidents are quite balance among the two genders.  </p>
+            </div>
+        </div>
+        </div>    
+        </div>
+        <!-- END -->
+
+    </div> <!-- END OF PAGE -->
+    <script type="text/javascript">
+        var specVis1 = "map.vg.json";
+        var specVis2 = "alcoholpiechart.vg.json";
+        var specVis3 = "groupbar.vg.json";
+        var specVis4 = "timeseries.vg.json";
+        var specVis5 = "speedlimitbarchart.vg.json";
+        var specVis6 = "Compare.vg.json";
+
+        vegaEmbed('#victoriamap', specVis1, { "actions": false }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#alcohol', specVis2, { "actions": false }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#groupbar', specVis3, { "actions": false }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#linechart', specVis4, { "actions": false }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#speedlimit', specVis5, { "actions": false }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#compared', specVis6, { "actions": false }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+    </script>
+
+</body>
+</html>
