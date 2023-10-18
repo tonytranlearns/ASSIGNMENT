@@ -1,0 +1,57 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 500,
+    "height": 300,
+    "config": {
+      "background": "#FFFFCC" 
+    },
+    "data": {
+      "url": "https://raw.githubusercontent.com/tonytranlearns/ASSIGNMENT/main/aggregated_accident_data.csv"
+    },
+    "params": [
+        {
+          "name": "severity_selection",
+          "value": null,
+          "bind": {
+            "input": "select",
+            "options": [
+              null,
+              "Fatal accident",
+              "Other injury accident",
+              "Serious injury accident"
+            ],
+            "labels": [
+              "Show All",
+              "Fatal Accident",
+              "Other Injury Accident",
+              "Serious Injury Accident"
+            ],
+            "name": "Severity Selection: "
+          }
+        },
+        {
+            "name": "year_selection",
+            "value": null,
+            "bind":{
+                "input": "select",
+                "options": [null, 2013, 2014, 2015, 2016, 2017,2018,2019],
+                "labels": ["Show All", "2013", "2014", "2015", "2016", "2017", "2018", "2019"],
+                "name": "Year Selection:    "
+            }
+        }
+      ],
+    "mark": "line",
+    "transform": [
+        {
+        "filter": "(severity_selection == null || datum.SEVERITY == severity_selection) && (year_selection == null || year(datum.ACCIDENT_DATE) == year_selection)"
+        }
+      ],
+    "encoding": {
+      "x": {"field": "ACCIDENT_DATE", "type": "temporal", "title": "Time"},
+      "y": {"field": "Accident Count", "type": "quantitative", "title": "Accident Count"},
+      "color": {"field": "SEVERITY", "type": "nominal"},
+      "tooltip": {"field": "Accident Count", "type": "quantitative"}
+    },
+    "config": {"view": {"stroke": null}, "axis": {"grid": false}}
+  }
+  

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 450,
+  "params": [
+    {
+      "name": "severity_selection",
+      "value": null,
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Fatal accident",
+          "Non injury accident",
+          "Other injury accident",
+          "Serious injury accident"
+        ],
+        "labels": [
+          "Show All",
+          "Fatal Accident",
+          "Non Injury Accident",
+          "Other Injury Accident",
+          "Serious Injury Accident"
+        ],
+        "name": "Severity Selection: "
+      }
+    }
+  ],
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/tonytranlearns/ASSIGNMENT/main/vic_localities.json",
+        "format": {"type": "topojson", "feature": "vic_localities"}
+      },
+      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/tonytranlearns/ASSIGNMENT/main/Crash%20Statistics%20Victoria%20-%20Crash%20Statistics%20Victoria.csv.csv"
+      },
+      "transform": [
+        {
+          "filter": "severity_selection == null || datum.SEVERITY == severity_selection"
+        }
+      ],
+      "mark": {"type": "circle", "tooltip": {"content": "data"}},
+      "encoding": {
+        "longitude": {"field": "LONGITUDE", "type": "quantitative"},
+        "latitude": {"field": "LATITUDE", "type": "quantitative"},
+        "color": {"field": "SEVERITY"},
+        "tooltip": [
+          {"field":  "ACCIDENT_TYPE", "type":"nominal", "title":"Acident Type: "},
+          {"field":  "SEVERITY", "type":"nominal", "title":"Severity: "},
+          {"field":  "SPEED_ZONE", "type":"nominal", "title":"Speed Zone: "},
+          {"field":  "ALCOHOL_RELATED", "type":"nominal", "title":"Alcohol Use: "}
+        ]
+      }
+    }
+  ]
+}
